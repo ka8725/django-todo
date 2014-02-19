@@ -1,10 +1,13 @@
 from django.db import models
 
 class Todo(models.Model):
+  NEW = 0
+  DONE = 1
   STATUSES = (
-    (0, 'New'),
-    (1, 'Completed')
+    (NEW, 'New'),
+    (DONE, 'Done')
   )
+
   name = models.TextField()
   date = models.DateField()
   status = models.PositiveSmallIntegerField(choices=STATUSES)
