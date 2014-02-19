@@ -1,3 +1,11 @@
 {% include 'todos/_top_links.html' %}
 
-#TODO feature.html
+<h1>Someday todos</h1>
+
+<ul>
+  {% for todo in todos %}
+    <li>
+      {{ todo.name }} {{ todo.date }}
+    </li>
+  {% endfor %}
+</ul>

@@ -8,7 +8,8 @@ def today(req):
 
 
 def feature(req):
-  return render(req, 'todos/feature.html')
+  todos = Todo.objects.filter(date__gt=date.today())
+  return render(req, 'todos/feature.html', {'todos': todos})
 
 
 def fixed(req):
