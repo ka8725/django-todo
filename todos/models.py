@@ -2,10 +2,10 @@ from django.db import models
 
 class Todo(models.Model):
   NEW = 0
-  DONE = 1
+  FIXED = 1
   STATUSES = (
     (NEW, 'New'),
-    (DONE, 'Done')
+    (FIXED, 'Fixed')
   )
 
   name = models.TextField()
