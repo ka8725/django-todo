@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from todos import views
+import views
 
 urlpatterns = patterns('',
   url(r'^$', views.today, name='today'),

@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from models import Todo
+from datetime import date
 
 def today(req):
-  return render(req, 'todos/today.html')
+  todos = Todo.objects.filter(date__lte=date.today())
+  return render(req, 'todos/today.html', {'todos': todos})
 
 
 def feature(req):

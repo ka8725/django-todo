@@ -1,1 +1,11 @@
-#TODO today.html
+{% include 'todos/_top_links.html' %}
+
+<h1>Today todos</h1>
+
+<ul>
+  {% for todo in todos %}
+    <li>
+      {{ todo.name }} {{ todo.date }}
+    </li>
+  {% endfor %}
+</ul>

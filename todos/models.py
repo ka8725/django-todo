@@ -10,4 +10,4 @@ class Todo(models.Model):
 
   name = models.TextField()
   date = models.DateField()
-  status = models.PositiveSmallIntegerField(choices=STATUSES)
+  status = models.PositiveSmallIntegerField(choices=STATUSES, default=NEW)
