@@ -3,6 +3,9 @@ from todos.models import Todo
 from datetime import date
 
 
+def back_path(req):
+  return req.META.get('HTTP_REFERER')
+
 def today(req):
   todos = Todo.objects.filter(date__lte=date.today(), status=Todo.NEW)
   return render(req, 'todos/today.html', {'todos': todos})
@@ -22,4 +25,12 @@ def fix(req):
   todo_ids = req.POST.getlist('todo_ids')
   for todo in Todo.objects.filter(id__in=todo_ids):
     todo.fix()
-  return redirect('todos:today')
+  return redirect(back_path(req))
+
+
+def remove(req):
+  todo_ids = req.POST.getlist('todo_ids')
+  for todo in Todo.objects.filter(id__in=todo_ids):
+    print todo
+    todo.delete()
+  return redirect(back_path(req))

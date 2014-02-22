@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Future todos</h1>
 
-  <form>
+  <form method='POST'>
     {% csrf_token %}
     <ul>
       {% for todo in todos %}
@@ -13,6 +13,7 @@
         </li>
       {% endfor %}
     </ul>
-    <a href="{% url 'todos:fix' %}" data-method='post'>fix</a>
+    <a href="{% url 'todos:fix' %}" class='action-link'>Fix</a>
+    <a href="{% url 'todos:remove' %}" class='action-link'>Remove</a>
   </form>
 {% endblock %}
