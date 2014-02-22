@@ -1,9 +1,9 @@
 {% extends 'todos/layout.html' %}
 
 {% block content %}
-  <h1>Today todos</h1>
+  <h1>Future todos</h1>
 
-  <form action="{% url 'todos:fix' %}" method="post">
+  <form>
     {% csrf_token %}
     <ul>
       {% for todo in todos %}
@@ -13,6 +13,6 @@
         </li>
       {% endfor %}
     </ul>
-    <input type='submit' value='fix' />
+    <a href="{% url 'todos:fix' %}" data-method='POST' class='action-link'>Fix</a>
   </form>
 {% endblock %}
