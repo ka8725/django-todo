@@ -1,5 +1,7 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from models import Todo
+from django.core.urlresolvers import reverse
+from todos.models import Todo
 from datetime import date
 
 def today(req):
@@ -15,3 +17,10 @@ def future(req):
 def fixed(req):
   todos = Todo.objects.filter(status=Todo.FIXED)
   return render(req, 'todos/fixed.html', {'todos': todos})
+
+
+def fix(req):
+  todo_ids = req.POST.getlist('todo_ids')
+  for todo in Todo.objects.filter(id__in=todo_ids):
+    todo.fix()
+  return HttpResponseRedirect(reverse('todos:today'))

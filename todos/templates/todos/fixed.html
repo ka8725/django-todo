@@ -1,11 +1,13 @@
-{% include 'todos/_top_links.html' %}
+{% extends 'todos/layout.html' %}
 
-<h1>Fixed todos</h1>
+{% block content %}
+  <h1>Fixed todos</h1>
 
-<ul>
-  {% for todo in todos %}
-    <li>
-      {{ todo.name }} {{ todo.date }}
-    </li>
-  {% endfor %}
-</ul>
+  <ul>
+    {% for todo in todos %}
+      <li>
+        {{ todo.name }} {{ todo.date }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

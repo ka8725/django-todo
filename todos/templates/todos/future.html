@@ -1,11 +1,18 @@
-{% include 'todos/_top_links.html' %}
+{% extends 'todos/layout.html' %}
 
-<h1>Someday todos</h1>
+{% block content %}
+  <h1>Future todos</h1>
 
-<ul>
-  {% for todo in todos %}
-    <li>
-      {{ todo.name }} {{ todo.date }}
-    </li>
-  {% endfor %}
-</ul>
+  <form action="{% url 'todos:fix' %}" method="post">
+    {% csrf_token %}
+    <ul>
+      {% for todo in todos %}
+        <li>
+          <input type='checkbox' name='todo_ids' value='{{ todo.id }}' />&nbsp;
+          {{ todo.name }} {{ todo.date }}
+        </li>
+      {% endfor %}
+    </ul>
+    <input type='submit' value='fix' />
+  </form>
+{% endblock %}

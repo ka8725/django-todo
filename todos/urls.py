@@ -6,4 +6,5 @@ urlpatterns = patterns('',
   url(r'^$', views.today, name='today'),
   url(r'^future$', views.future, name='future'),
   url(r'^fixed$', views.fixed, name='fixed'),
+  url(r'^fix$', views.fix, name='fix'),
 )
