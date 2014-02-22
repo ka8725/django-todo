@@ -7,9 +7,9 @@ def today(req):
   return render(req, 'todos/today.html', {'todos': todos})
 
 
-def feature(req):
+def future(req):
   todos = Todo.objects.filter(date__gt=date.today(), status=Todo.NEW)
-  return render(req, 'todos/feature.html', {'todos': todos})
+  return render(req, 'todos/future.html', {'todos': todos})
 
 
 def fixed(req):
