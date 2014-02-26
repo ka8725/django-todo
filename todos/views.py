@@ -1,6 +1,14 @@
 from django.shortcuts import render, redirect
 from todos.models import Todo
 from datetime import date
+from django.views.generic.edit import CreateView
+
+
+class TodoView(CreateView):
+  model = Todo
+  fields = ('name', 'date')
+  # Figure out how to use here resolve() or reverse() functino
+  success_url = '/todos/'
 
 
 def today(req):
@@ -31,9 +39,6 @@ def remove(req):
     print todo
     todo.delete()
   return redirect(_back_path(req))
-
-def new(req):
-  return render(req, 'todos/new.html')
 
 
 def _back_path(req):
