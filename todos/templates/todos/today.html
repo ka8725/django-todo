@@ -3,17 +3,13 @@
 {% block content %}
   <h1>Today todos</h1>
 
-  <form method='POST'>
-    {% csrf_token %}
-    <ul>
-      {% for todo in todos %}
-        <li>
-          <input type='checkbox' name='todo_ids' value='{{ todo.id }}' />&nbsp;
-          {{ todo.name }} {{ todo.date }}
-        </li>
-      {% endfor %}
-    </ul>
-    <a href="{% url 'todos:fix' %}" class='action-link'>Fix</a>
-    <a href="{% url 'todos:remove' %}" class='action-link'>Remove</a>
-  </form>
+  {% include 'todos/_list_with_form.html' %}
+
+  <div class='form-actions'>
+    <a href="{% url 'todos:new' %}">Add task</a>
+    {% if todos %}
+      <a href="{% url 'todos:fix' %}" class='action-link'>Fix</a>
+      <a href="{% url 'todos:remove' %}" class='action-link'>Remove</a>
+    {% endif %}
+  </div>
 {% endblock %}

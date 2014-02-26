@@ -1,0 +1,15 @@
+{% if todos %}
+  <form method='POST'>
+    {% csrf_token %}
+    <ul>
+      {% for todo in todos %}
+        <li>
+          <input type='checkbox' name='todo_ids' value='{{ todo.id }}' />&nbsp;
+          {{ todo.name }} {{ todo.date }}
+        </li>
+      {% endfor %}
+    </ul>
+  </form>
+{% else %}
+  <b>The list is empty!</b>
+{% endif %}

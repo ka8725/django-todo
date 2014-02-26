@@ -32,6 +32,9 @@ def remove(req):
     todo.delete()
   return redirect(_back_path(req))
 
+def new(req):
+  return render(req, 'todos/new.html')
+
 
 def _back_path(req):
   return req.META.get('HTTP_REFERER')
