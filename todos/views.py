@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from todos.models import Todo
 from datetime import date
@@ -12,25 +11,21 @@ class TodoView(CreateView):
   success_url = '/todos/'
 
 
-@login_required
 def today(req):
   todos = Todo.objects.filter(date__lte=date.today(), status=Todo.NEW)
   return render(req, 'todos/today.html', {'todos': todos})
 
 
-@login_required
 def future(req):
   todos = Todo.objects.filter(date__gt=date.today(), status=Todo.NEW)
   return render(req, 'todos/future.html', {'todos': todos})
 
 
-@login_required
 def fixed(req):
   todos = Todo.objects.filter(status=Todo.FIXED)
   return render(req, 'todos/fixed.html', {'todos': todos})
 
 
-@login_required
 def fix(req):
   todo_ids = req.POST.getlist('todo_ids')
   for todo in Todo.objects.filter(id__in=todo_ids):
@@ -38,7 +33,6 @@ def fix(req):
   return redirect(_back_path(req))
 
 
-@login_required
 def remove(req):
   todo_ids = req.POST.getlist('todo_ids')
   for todo in Todo.objects.filter(id__in=todo_ids):
@@ -46,6 +40,5 @@ def remove(req):
   return redirect(_back_path(req))
 
 
-@login_required
 def _back_path(req):
   return req.META.get('HTTP_REFERER')
