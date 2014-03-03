@@ -87,3 +87,4 @@ TEMPLATE_DIRS = (
   )
 
 LOGIN_REDIRECT_URL = '/todos'
+LOGOUT_REDIRECT_URL = '/accounts/login'
