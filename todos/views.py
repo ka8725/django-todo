@@ -36,7 +36,6 @@ def fix(req):
 def remove(req):
   todo_ids = req.POST.getlist('todo_ids')
   for todo in Todo.objects.filter(id__in=todo_ids):
-    print todo
     todo.delete()
   return redirect(_back_path(req))
 
