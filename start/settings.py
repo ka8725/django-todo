@@ -27,6 +27,16 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+ACCOUNT_ACTIVATION_DAYS = 7
+AUTH_USER_EMAIL_UNIQUE = True
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'info@google.ru'
+
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -37,6 +47,7 @@ INSTALLED_APPS = (
   'django.contrib.messages',
   'django.contrib.staticfiles',
   'todos',
+  'registration'
   )
 
 MIDDLEWARE_CLASSES = (
@@ -87,4 +98,3 @@ TEMPLATE_DIRS = (
   )
 
 LOGIN_REDIRECT_URL = '/todos'
-LOGOUT_REDIRECT_URL = '/accounts/login'
